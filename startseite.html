@@ -184,7 +184,8 @@
         grid-template-columns: repeat(3, var(--tile-size));
         grid-template-rows: repeat(2, var(--tile-size));
         gap: 14px;
-        width: 560px;
+        width: max-content;
+        justify-content: center;
       }
 
       .tile {
@@ -213,6 +214,7 @@
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         opacity: 0;
         transform: translateY(10px);
+        margin: 0 auto;
       }
 
       /* Staggered tile entrance */
@@ -403,7 +405,13 @@
     <div id="bg"></div>
 
     <div id="app">
-      <div id="imageLogo"><img src="https://s1.directupload.eu/images/260220/oo4s4dv6.png" alt="Ragequit" class="rage"></div>
+      <div id="imageLogo">
+        <img
+          src="https://s1.directupload.eu/images/260220/oo4s4dv6.png"
+          alt="Ragequit"
+          class="rage"
+        />
+      </div>
       <div id="clock">00:00</div>
       <div id="date">Laden...</div>
 
