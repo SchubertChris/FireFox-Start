@@ -208,10 +208,10 @@
   }
 
   .tile:hover {
-    background: rgba(255,255,255,0.085);
-    border-color: rgba(255,255,255,0.42);
+    background: rgba(255,255,255,0.075);
+    border-color: rgba(255,255,255,0.32);
     color: rgba(255,255,255,0.95);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow:
       var(--glass-shine),
       var(--glow-hover),
@@ -235,21 +235,50 @@
     width: 28px;
     height: 28px;
     opacity: 0.55;
-    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1),
+                filter  0.3s cubic-bezier(0.4,0,0.2,1),
+                color   0.3s cubic-bezier(0.4,0,0.2,1);
   }
 
   .tile:hover .tile-icon {
-    opacity: 0.92;
-    filter: drop-shadow(0 0 12px var(--glow-color-soft));
+    opacity: 1;
+    filter: drop-shadow(0 0 10px var(--brand-glow));
   }
 
-  /* Per-tile brand colors – sehr zurückhaltend */
-  .tile-claude  { --glow-color-soft: rgba(205,147,87,0.18); }
-  .tile-chatgpt { --glow-color-soft: rgba(116,208,168,0.18); }
-  .tile-youtube { --glow-color-soft: rgba(255,80,80,0.18); }
-  .tile-yahoo   { --glow-color-soft: rgba(150,100,255,0.18); }
-  .tile-github  { --glow-color-soft: rgba(210,210,210,0.15); }
-  .tile-vercel  { --glow-color-soft: rgba(255,255,255,0.15); }
+  /* Apple-like active/click state */
+  .tile:active {
+    transform: scale(0.95) !important;
+    background: rgba(255,255,255,0.08) !important;
+    border-color: rgba(255,255,255,0.35) !important;
+    transition: transform 0.08s cubic-bezier(0.4,0,0.2,1),
+                background 0.08s ease,
+                border-color 0.08s ease !important;
+  }
+
+  .tile:active .tile-icon {
+    opacity: 0.75;
+    transform: scale(0.94);
+  }
+
+  .tile:active .tile-label {
+    opacity: 0.6;
+  }
+
+  /* Brand icon farben */
+  .tile-claude  svg { fill: #d4956a; }
+  .tile-chatgpt svg { fill: #74d7a0; }
+  .tile-youtube svg { fill: #ff4e4e; }
+  .tile-yahoo   svg { fill: #a069f0; }
+  .tile-github  svg { fill: #e0e0e0; }
+  .tile-vercel  svg { fill: #ffffff; }
+
+  /* Sanfter Ambient Glow beim Hover */
+  .tile-claude  { --brand-glow: rgba(212,149,106,0.25); }
+  .tile-chatgpt { --brand-glow: rgba(116,215,160,0.22); }
+  .tile-youtube { --brand-glow: rgba(255,78,78,0.22); }
+  .tile-yahoo   { --brand-glow: rgba(160,105,240,0.22); }
+  .tile-github  { --brand-glow: rgba(220,220,220,0.18); }
+  .tile-vercel  { --brand-glow: rgba(255,255,255,0.18); }
 
   .tile-label {
     position: relative;
